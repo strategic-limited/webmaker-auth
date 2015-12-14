@@ -377,6 +377,35 @@ module.exports = function (options) {
         email: req.session.email
       });
     },
+    tos: function(req, res, next) {
+      if (!req.session.email && !req.session.user) {
+        return res.json({
+          status: 'No Session'
+        });
+      }
+      var hReq = hyperquest.post({
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        uri: self.authLoginURL + '/api/v2/user/tos'
+      });
+      hReq.on('error', next);
+      hReq.on('response', function (resp) {
+        if (res.statusCode !== 200) {
+          if (resp.statusCode === 404) {
+            return res.json({
+              tos: false
+            });
+          }
+          return res.json(resp.statusCode || 500, {
+            error: 'There was a error on the login server'
+          });
+        }
+      });
+      hReq.end(JSON.stringify({
+        tos: true
+      }), 'utf8');
+    },
     createUser: function (req, res, next) {
       var hReq = hyperquest.post({
         headers: {
