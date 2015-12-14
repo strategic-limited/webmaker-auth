@@ -405,6 +405,7 @@ module.exports = function (options) {
         }
       });
       hReq.end(JSON.stringify({
+        uid: req.session.user.email,
         tos: true
       }), 'utf8');
     },
