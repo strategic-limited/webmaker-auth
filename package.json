@@ -13,6 +13,8 @@
   "author": "Webmaker Product Team <webmaker-staff@mozillafoundation.org>",
   "license": "MPL-2.0",
   "dependencies": {
+    "cookie-parser": "^1.4.0",
+    "cookie-session": "^2.0.0-alpha.1",
     "express": "4.x",
     "hyperquest": "~0.2.0"
   },
