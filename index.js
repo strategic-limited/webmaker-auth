@@ -31,7 +31,8 @@ module.exports = function (options) {
   self.loginHost = options.loginHost;
   self.allowCors = options.allowCors;
 
-  self.refreshTime = options.refreshTime || 1000 * 60 * 15; // 15 minutes
+  //self.refreshTime = options.refreshTime || 1000 * 60 * 15; // 15 minutes
+  self.refreshTime = options.refreshTime || 1000 * 60 * 1; // 1 minute only
 
   self.forceSSL = options.forceSSL || false;
   self.secretKey = options.secretKey;
